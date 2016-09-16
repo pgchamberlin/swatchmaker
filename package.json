@@ -1,0 +1,39 @@
+{
+  "name": "swatchmaker",
+  "version": "0.1.0",
+  "description": "An isomorphic Express app which extracts colour palettes from images using K-means clustering",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "express": "^4.14.0",
+    "mu2": "^0.5.21"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-uglifycss": "^1.0.6",
+    "jasmine": "^2.5.1",
+    "pump": "^1.0.1",
+    "uglify-js": "^2.7.3",
+    "uglifycss": "0.0.21"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgchamberlin/swatchmaker.git"
+  },
+  "keywords": [
+    "k-means",
+    "colour",
+    "palette",
+    "extraction"
+  ],
+  "author": "pgchamberlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pgchamberlin/swatchmaker/issues"
+  },
+  "homepage": "https://github.com/pgchamberlin/swatchmaker#readme"
+}
