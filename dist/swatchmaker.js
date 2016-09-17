@@ -1,1 +1,1 @@
-module.exports={run:function(){console.log("running")}};
+!function(o,e){"object"==typeof module&&module.exports?module.exports=e():o.Swatchmaker=e()}(this,function(){var o={hello:function(){console.log("hello")}};return o});
