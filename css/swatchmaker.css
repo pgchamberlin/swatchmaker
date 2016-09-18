@@ -86,6 +86,6 @@ footer {
     }
 }
 /* trumps */
-.hidden {
+.js .hidden {
     display: none !important;
 }
