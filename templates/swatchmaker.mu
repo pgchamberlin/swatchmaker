@@ -49,7 +49,8 @@
                 </div>
                 <div class="split-column">
                     <h2>Source image</h2>
-                    <canvas id="canvas" class="canvas">{{{source_image}}}</canvas>
+                    {{{image}}}
+                    <canvas id="canvas" class="canvas"></canvas>
                 </div>
             </div>
             <footer>
