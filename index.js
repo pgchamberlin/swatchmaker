@@ -76,6 +76,9 @@ function render(req, res, palette, image) {
     });
 }
 
+/**
+ TODO: factor this out. Should be able to cover this with Jimp resize.
+*/
 function getResizedPixelsData(pixels, maxSide) {
     var width = pixels.shape[0];
     var height = pixels.shape[1];
