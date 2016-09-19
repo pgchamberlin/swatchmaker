@@ -1,29 +1,50 @@
 var express = require('express');
+var compression = require('compression');
 var Promise = require('bluebird');
 var getPixels = require('get-pixels');
 var multer = require('multer');
 var btoa = require('btoa');
 var Jimp = require('jimp');
+var fs = Promise.promisifyAll(require('fs'));
 
 var Swatchmaker = require('./lib/shared/swatchmaker');
-
-var fs = Promise.promisifyAll(require('fs'));
 var engine = require('./lib/mu-express-engine');
 
-var app = express();
-app.engine('mu', engine);
-app.set('view engine', 'mu');
-app.set('views', __dirname + '/templates');
-
-var files = {
+/**
+    Set up static asset paths depending on environment
+*/
+var prodFiles = {
     swatchmaker_js: "/dist/swatchmaker.js",
     classutil_js: "/dist/class-util.js",
     client_js: "/dist/client.js",
-    inline_css: "/dist/swatchmaker.css"
+    inline_css: "/dist/swatchmaker.css",
+    views_path: "/dist",
+    mustache_html: "swatchmaker.mu"
 }
+var devFiles = {
+    swatchmaker_js: "/lib/shared/swatchmaker.js",
+    classutil_js: "/lib/shared/class-util.js",
+    client_js: "/lib/shared/client.js",
+    inline_css: "/css/swatchmaker.css",
+    views_path: "/templates",
+    mustache_html: "swatchmaker.mu"
+}
+var files;
+/**
+*/
+
+var app = express();
+app.use(compression());
+app.engine('mu', engine);
+app.set('view engine', 'mu');
 
 var storage = multer.memoryStorage()
 var upload = multer({ storage: storage })
+
+function setStaticPaths(req) {
+    files = req.query.dev !== undefined ? devFiles : prodFiles;
+    app.set('views', __dirname + files.views_path);
+}
 
 function getImageMarkup(image) {
     return !!image ? '<img width="100%" src="' + image + '" alt="Image processed" />' : "";
@@ -38,12 +59,13 @@ function getPaletteMarkup(palette) {
     return markup;
 }
 
-function render(res, palette, image) {
+function render(req, res, palette, image) {
+    setStaticPaths(req);
     Promise.map([ "inline_css", "swatchmaker_js", "classutil_js", "client_js" ], function(file) {
         return fs.readFileAsync(__dirname + files[file]);
     }).then(function(data) {
         res.render(
-            'swatchmaker.mu',
+            files.mustache_html,
             {
                 inline_css: data[0],
                 inline_js: data[1] + data[2] + data[3],
@@ -73,7 +95,7 @@ function getResizedPixelsData(pixels, maxSide) {
 }
 
 app.get('/', function(req, res) {
-    render(res);
+    render(req, res);
 });
 
 app.post('/', upload.single('image'), function (req, res) {
@@ -84,9 +106,8 @@ app.post('/', upload.single('image'), function (req, res) {
         console.log("Palette extracted in " + time + "ms", palette);
         Jimp.read(req.file.buffer).then(function(image) {
             image.scaleToFit(400, 400);
-            console.log(image);
             image.getBase64(Jimp.AUTO, function(err, b64) {
-                render(res, palette, b64);
+                render(req, res, palette, b64);
             });
         });
     });
