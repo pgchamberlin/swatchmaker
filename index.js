@@ -69,6 +69,7 @@ function render(req, res, palette, image) {
             {
                 inline_css: data[0],
                 inline_js: data[1] + data[2] + data[3],
+                results_not_included: (!palette || !image),
                 palette: getPaletteMarkup(palette),
                 image: getImageMarkup(image)
             }
@@ -103,10 +104,9 @@ app.get('/', function(req, res) {
 
 app.post('/', upload.single('image'), function (req, res) {
     getPixels(req.file.buffer, req.file.mimetype, function(err, pixels) {
-        var data = getResizedPixelsData(pixels, 400); var timer = new Date().getTime();
+        var data = getResizedPixelsData(pixels, 300); var timer = new Date().getTime();
         var palette = Swatchmaker.extractPalette(data, 5, "RGB");
         var time = new Date().getTime() - timer;
-        console.log("Palette extracted in " + time + "ms", palette);
         Jimp.read(req.file.buffer).then(function(image) {
             image.scaleToFit(400, 400);
             image.getBase64(Jimp.AUTO, function(err, b64) {

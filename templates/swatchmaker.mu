@@ -8,19 +8,60 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <style type="text/css">{{{inline_css}}}</style>
 </head>
-<body>
-    <div class="column">
-        <div id="masthead" class="masthead">
-            <h1 class="heading"><a href="#home" class="heading__link">Swatchmaker</a></h1>
+<body class="nojs">
+    <div id="masthead" class="masthead">
+        <h1 class="heading">
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="f1" points="43,3 83,23 43,43 3,23" />
+            <polygon class="f2" points="83,23 83,63 43,83 43,43" />
+            <polygon class="f3" points="3,23 43,43 43,83 3,63" />
+        </svg>
+        </span>Swatchmaker</h1>
+    </div>
+    <main role="main" id="main">
+        <div id="output" class="{{#results_not_included}}jsonly{{/results_not_included}}">
+            <h2>Results</h2>
+            <div id="results" class="results">
+                <div class="split-column">
+                    <p>Your palette</p>
+                    <div id="palette" class="palette">{{{palette}}}</div>
+                </div>
+                <div class="split-column">
+                    <p>Source image</p>
+                    {{{image}}}
+                    <canvas id="canvas" class="canvas"></canvas>
+                </div>
+            </div>
+            <p class="jsonly"><a href="#home">Process another image</a>.</p>
         </div>
-        <main role="main" id="main">
+        <div class="jsonly" id="working">
+            <div class="spinner">
+                <svg height="86" width="86" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="43,1 85,22 85,64 43,85 1,64 1,22" class="s"></polygon>
+                    <polygon points="43,4 82,23 43,43 4,23" fill="mediumseagreen"></polygon>
+                    <polygon points="4,23 43,43 43,82 4,62" fill="indianred"></polygon>
+                    <polygon points="82,23 82,62 43,82 43,43" fill="deepskyblue"></polygon>
+                </svg>
+                <p class="s-text">Processing</p>
+            </div>
+        </div>
+        <div id="how-it-works">
+            <h2>How does it work?</h2>
+            <p>For most devices Swatchmaker runs it's analysis in the browser using JavaScript. When a device has poor JavaSript capabilities it falls back to a NodeJS server-side version which runs the same, isomorphic, Swatchmaker K-means clustering code.</p>
+            <p>All the Swatchmaker code is released under an MIT license and is <a href="https://github.com/pgchamberlin/swatchmaker">hosted on Github</a>.</p>
+        </div>
+        <div id="home">
+            <h2>Extract colours from images</h2>
+            <p>Swatchmaker uses k-means clustering to analyze an image and derive a representative palette of colours.</p>
+            <p class="nojsonly">To use Swatchmaker on your device we need to upload your images to a server for analysis. <a href="#privacy">View privacy statement</a></p>
+            <p class="nojsonly"><em>Please note that large images may take a long time to upload and may incur bandwidth costs.</em></p>
+            <h2>Try it out</h2>
             <form method="POST" action="./" id="form" enctype="multipart/form-data">
-                <p>Swatchmaker uses k-means clustering to extract a colour palette from an image.</p>
-                <div class="input">
-                    <label id="input__file__label" for="input__file" class="input__label">Select an image from your computer</label>
+                <div class="input input--cta">
+                    <label id="input__file__label" for="input__file" class="input__label">Select an image from your device.</label>
                     <input id="input__file" class="input__file" name="image" type="file" accept="image/*">
                 </div>
-                <fieldset>
+                <fieldset class="jsonly">
                     <legend>Advanced options</legend>
                     <div>
                         <label for="input__k" class="input__label">Palette size (K)&#58;</label>
@@ -36,28 +77,15 @@
                     </div>
                 </fieldset>
                 <input class="input input__submit" type="submit" value="Extract palette">
-                <button>Advanced options</button>
             </form>
-            <div class="hidden" id="spinner">
-                <p><em>Processing your image&hellip;</em></p>
-            </div>
-            <div id="results" class="hidden results">
-                <div class="split-column">
-                    <h2>Palette</h2>
-                    <div id="palette" class="palette">{{{palette}}}</div>
-                    <button>View details</button>
-                </div>
-                <div class="split-column">
-                    <h2>Source image</h2>
-                    {{{image}}}
-                    <canvas id="canvas" class="canvas"></canvas>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <p><a href="#main">Back to top</a></p>
-        </footer>
-    </div>
+        </div>
+    </main>
+    <footer>
+        <h2>More information</h2>
+        <ul>
+            <li><a href="#how-it-works">How it works</a></li>
+        </ul>
+    </footer>
     <canvas id="workspace" class="hidden"></canvas>
     <script type="text/javascript">{{{inline_js}}}</script>
 </body>

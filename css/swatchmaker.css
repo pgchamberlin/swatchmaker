@@ -1,28 +1,63 @@
 html, body {
     height: 100%;
     margin: 0;
-    color: rgb(45, 45, 45);
-    background-color: rgb(245, 245, 245);
+    color: #f0f0f0;;
+    background-color: #333333;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 100%;
 }
-.masthead {
+h1, h2 {
+    font-weight: normal;
     text-transform: uppercase;
-    border-bottom: 3px solid rgb(45, 45, 45);
+    letter-spacing: 0.2em;
 }
-footer {
-    margin-bottom: 1em;
-}
-.column {
-    padding: 0 1em;
-}
-.heading {
+h1 {
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;;
     margin: 0;
-    padding: 1em 0 0.5em;
+    padding: 0.8em 0.5em 0.5em;
+    font-size: 1.8em;
 }
-.heading__link {
+h2 {
+    padding: 0.5em 0;
+    font-size: 1.2em;
+    line-height: 1.3em;
+    border-bottom: 1px solid #f5f5f5;
+}
+p {
+    letter-spacing: 0.07em;
+    line-height: 1.2em;
+}
+a {
+    color: skyblue;
     text-decoration: none;
-    color: rgb(45, 45, 45);
+    border-bottom: 1px dashed skyblue;
+}
+
+/**
+Heydonworks hashchange SPA technique
+https://www.smashingmagazine.com/2015/12/reimagining-single-page-applications-progressive-enhancement/
+*/
+.spa > * {
+    display: none;
+    margin-top: -6em;
+    padding-top: 6em;
+}
+
+.spa > *:last-child {
+    display: block;
+}
+
+.spa > *:target {
+    display: block;
+}
+
+.spa > *:target ~ * {
+    display: none;
+}
+/** */
+main {
+    margin: 0 1em;
 }
 .swatch {
     display: inline-block;
@@ -34,13 +69,18 @@ footer {
 }
 .input {
     display: inline-block;
-    border: 1px solid rgb(45, 45, 45);
-    background-color: rgb(255, 255, 255);
+    border: 1px solid #f0f0f0;;
+    color: #f0f0f0;;
+    background-color: #333333;
     padding: 0.5em;
     position: relative;
     font-weight: bold;
     text-align: center;
     margin-bottom: 0.5em;
+}
+.input--cta {
+    background-color: skyblue;
+    color: rgb(34, 34, 34);
 }
 .input__label {
     cursor: pointer;
@@ -65,7 +105,7 @@ footer {
 }
 .input__file--selected {
     background-color: seagreen;
-    color: rgb(255, 255, 255);
+    color: #f0f0f0;
 }
 .input__submit {
     display: block;
@@ -73,19 +113,84 @@ footer {
 }
 @media only screen and (min-width: 900px) {
     .results {
-    display: flex;
-    flex-direction: row-reverse;
+        display: flex;
+        flex-direction: row-reverse;
     }
     .split-column + .split-column {
-    margin-right: 1em;
+        margin-right: 1em;
     }
     .split-column {
-    vertical-align: top;
-    flex-basis: 50%;
-    flex-grow: 1;
+        vertical-align: top;
+        flex-basis: 50%;
+        flex-grow: 1;
     }
 }
-/* trumps */
-.js .hidden {
+
+/** Objects */
+
+.spinner {
+    text-align: center;
+    margin: 15% auto 45%;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.s {
+    stroke-dasharray: 10;
+    fill: transparent;
+    stroke-width: 2px;
+    stroke: #f0f0f0;
+}
+
+.s-text {
+    color: #fff;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+
+.logo {
+    width: 2em;
+    vertical-align: middle;
+}
+
+.f1, .f2, .f3 {
+    fill-opacity: 0;
+    -webkit-animation: 6s logo linear forwards;
+    animation: 4s logo linear forwards;
+}
+
+.f1 {
+    fill: mediumseagreen;
+    animation-delay: 1s;
+}
+
+.f2 {
+    fill: deepskyblue;
+    animation-delay: 2s;
+}
+
+.f3 {
+    fill: indianred;
+    animation-delay: 3s;
+}
+
+@keyframes logo {
+    0% {
+        fill-opacity: 0;
+    }
+    100% {
+        fill-opacity: 1;
+    }
+}
+
+/** Trumps */
+.js .nojsonly,
+.nojs .jsonly {
+    display: none !important;
+}
+
+.hidden {
     display: none !important;
 }
