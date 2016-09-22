@@ -142,6 +142,7 @@ app.post('/', upload.single('image'), function (req, res) {
     });
 });
 
-app.listen(3000, function () {
-  console.log('Swatchmaker listening on port 3000!');
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log("Swatchmaker listening on port " + port + "!");
 });
