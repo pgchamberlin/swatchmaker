@@ -14,6 +14,8 @@ It should be very straightforward to get Swatchmaker working locally following t
 Here are the commands:
 
 ```
+git clone git@github.com:pgchamberlin/swatchmaker.git
+cd swatchmaker
 npm install
 ./node_modules/gulp/bin/gulp.js
 node index.js
