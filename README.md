@@ -1,6 +1,6 @@
 # Swatchmaker
 
-Palette extraction using K-means clustering
+Palette extraction using K-means clustering.
 
 ### Installation
 
