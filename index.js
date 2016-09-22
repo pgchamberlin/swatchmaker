@@ -6,6 +6,7 @@ var multer = require('multer');
 var btoa = require('btoa');
 var Jimp = require('jimp');
 var fs = Promise.promisifyAll(require('fs'));
+var md = require('markdown-it')();
 
 var Swatchmaker = require('./lib/shared/swatchmaker');
 var engine = require('./lib/mu-express-engine');
@@ -30,6 +31,19 @@ var devFiles = {
     mustache_html: "swatchmaker.mu"
 }
 var files;
+
+var docs = {};
+var docfiles = [
+    "how_it_works",
+    "why"
+];
+Promise.map(docfiles, function(filename) {
+    return fs.readFileAsync(__dirname + "/docs/" + filename + ".md");
+}).then(function(files) {
+    files.forEach(function(file, i) {
+        docs[docfiles[i]] = md.render(file.toString());
+    });
+});
 /**
 */
 
@@ -71,15 +85,18 @@ function render(req, res, palette, image) {
                 inline_js: data[1] + data[2] + data[3],
                 results_not_included: (!palette || !image),
                 palette: getPaletteMarkup(palette),
-                image: getImageMarkup(image)
+                image: getImageMarkup(image),
+                how_it_works: docs["how_it_works"],
+                why: docs["why"]
             }
         );
     });
 }
 
 /**
- TODO: factor this out. Should be able to cover this with Jimp resize.
-*/
+ * Quick and dirty resize
+ * TODO: factor this out. Should be able to cover this with Jimp resize.
+ */
 function getResizedPixelsData(pixels, maxSide) {
     var width = pixels.shape[0];
     var height = pixels.shape[1];
@@ -102,9 +119,18 @@ app.get('/', function(req, res) {
     render(req, res);
 });
 
+app.get('/why', function(req, res) {
+    render(req, res);
+});
+
+app.get('/how-it-works', function(req, res) {
+    render(req, res);
+});
+
 app.post('/', upload.single('image'), function (req, res) {
     getPixels(req.file.buffer, req.file.mimetype, function(err, pixels) {
-        var data = getResizedPixelsData(pixels, 300); var timer = new Date().getTime();
+        var data = getResizedPixelsData(pixels, 300);
+        var timer = new Date().getTime();
         var palette = Swatchmaker.extractPalette(data, 5, "RGB");
         var time = new Date().getTime() - timer;
         Jimp.read(req.file.buffer).then(function(image) {
