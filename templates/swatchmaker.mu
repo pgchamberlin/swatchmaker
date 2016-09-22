@@ -10,7 +10,7 @@
 </head>
 <body class="nojs">
     <div id="masthead" class="masthead">
-        <h1 class="heading"><a class="heading__link" href="./">
+        <h1 class="heading"><a class="heading__link" href="#">
         <svg class="logo" viewBox="0 0 86 94" xmlns="http://www.w3.org/2000/svg">
             <polygon points="43,1 85,22 85,64 43,85 1,64 1,22" class="logo__stroke"></polygon>
             <polygon points="43,6 81,25 43,43 5,25" class="logo__facet1"></polygon>
