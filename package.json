@@ -10,6 +10,7 @@
     "express": "^4.14.0",
     "get-pixels": "^3.3.0",
     "jimp": "^0.2.27",
+    "markdown-it": "^8.0.0",
     "mu2": "^0.5.21",
     "multer": "^1.2.0",
     "node-base64-image": "^1.0.1",
