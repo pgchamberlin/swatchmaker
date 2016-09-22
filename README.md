@@ -25,6 +25,10 @@ You should see the message `Swatchmaker listening on port 3000!`, and the app sh
 
 By default the app will use the `/dist` assets, which are minified and uglified. This makes it hard to develop, so I've made it possible to put the app into dev mode using the query string `?dev`. This uses the raw assets instead.
 
+```
+http://localhost:3000/?dev
+```
+
 ### Different ports
 
 To launch Swatchmaker on a port other than `3000` pass the port as an environment variable:
