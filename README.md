@@ -7,9 +7,17 @@ Palette extraction using K-means clustering
 It should be very straightforward to get Swatchmaker working locally following these steps.
 
  * Clone this repo
- * Install dependencies: `npm install`
- * Do a local build: `./node_modules/gulp/bin/gulp.js`
- * Launch the server: `node index.js`
+ * Install dependencies
+ * Do a local build
+ * Launch the server
+
+Here are the commands:
+
+```
+npm install
+./node_modules/gulp/bin/gulp.js
+node index.js
+```
 
 You should see the message `Swatchmaker listening on port 3000!`, and the app should be working a [`http://localhost:3000`](http://localhost:3000).
 
