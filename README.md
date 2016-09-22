@@ -39,4 +39,4 @@ PORT=3210 node index.js
 
 ### More information
 
-Take a look in the ``/docs``` directory for more information.
+Take a look in the `/docs` directory for more information.
