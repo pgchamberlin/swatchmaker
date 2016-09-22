@@ -15,7 +15,7 @@ Like many other algorithms used in data analysis it's not actually that complica
 
 Simple, right?
 
-One of the weaknesses of the algorithm is that it can be tricky to predict a good value for K. For Swatchmaker I've defaulted to K=5, but that's arbitrary and you can change it using the advanced options. The fact is that good values for K will vary significantly from image to image. Bear in mind that higher values are more expensive to compute.
+One of the weaknesses of the algorithm is that it can be tricky to predict a good value for K. For Swatchmaker I've defaulted to K=5, but that's arbitrary and you can change it using the advanced options (coming soon...). The fact is that good values for K will vary significantly from image to image. Bear in mind that higher values are more expensive to compute.
 
 For a deeper dive take a look at [Swatchmaker's source code](https://github.com/pgchamberlin/swatchmaker/blob/master/lib/shared/swatchmaker.js), or look up the better, more detailed article about [K-means on Wikipedia](https://en.wikipedia.org/wiki/K-means_clustering).
 
