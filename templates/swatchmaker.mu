@@ -64,7 +64,7 @@
             <p class="nojsonly">To use Swatchmaker on your device we need to upload any images you submit to a server for analysis. The server will not store the images.</p>
             <p class="nojsonly"><em>Please note that large images may take a long time to upload and may incur bandwidth costs.</em></p>
             <h2>Try it out</h2>
-            <form method="POST" action="./" id="form" enctype="multipart/form-data">
+            <form method="POST" action="#" id="form" enctype="multipart/form-data">
                 <ol>
                     <li>
                         <div class="input cta">
@@ -98,8 +98,8 @@
             <nav class="jsonly" role="navigation">
                 <h2>More information</h2>
                 <ul>
-                    <li><a class="hash" href="/how-it-works">How it works</a></li>
-                    <li><a class="hash" href="/why">Why?</a></li>
+                    <li><a class="hash" href="./how-it-works">How it works</a></li>
+                    <li><a class="hash" href="./why">Why?</a></li>
                 </ul>
             </h2>
         </div>
