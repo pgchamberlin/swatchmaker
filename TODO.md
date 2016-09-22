@@ -1,5 +1,5 @@
 Advanced options:
- - [ ]Canvas filters (https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
+ - [ ] Canvas filters (https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
  - [ ] Brights / mids / darks filter
  - [ ] Saturation filter (could this be done with canvas saturation filter? Or just isolate existing saturated pixels?)
  
