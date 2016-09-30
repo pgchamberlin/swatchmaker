@@ -27,6 +27,10 @@
                 <div class="split-column">
                     <h3>Palette</h3>
                     <div id="palette" class="palette">{{{palette}}}</div>
+					{{#export}}
+                    <h3>Export</h3>
+                    <div id="export" class="export">{{{export}}}</div>
+					{{/export}}
                 </div>
                 <div class="split-column">
                     <h3>Source image</h3>
@@ -35,7 +39,7 @@
                 </div>
             </div>
             <hr>
-            <p class="jsonly"><a href="#home">Process another image</a></p>
+            <p><a href="#home" class="link-back jsonly">Return</a></p>
         </div>
         <div class="jsonly spinner" id="working">
             <svg class="spinner__svg" viewBox="0 0 86 86" xmlns="http://www.w3.org/2000/svg">
@@ -73,25 +77,23 @@
                         </div>
                     </li>
                     <li class="jsonly">
-                        <button role="button">Configure</button>
                         <fieldset>
-                            <legend>Swatchmaker settings</legend>
-                            <div>
-                                <label for="input__k" class="input__label">Palette size (K)&#58;</label>
-                                <input id="input__k" class="input input__k" type="number" name="K" value=3 max=10>
+                            <legend>Configure</legend>
+                            <div class="input-wrapper">
+                                <label for="input__k">Palette size (K)</label>
+                                <input id="input__k" type="number" name="K" value=3 max=10>
                             </div>
-                            <div>
-                                <label for="input__space" class="input__label">Colour space&#58;</label>
-                                <select class="input" id="input__space" name="space">
+                            <div class="input-wrapper">
+                                <label for="input__space">Colour space</label>
+                                <select id="input__space" name="space">
                                     <option value="YUV" selected>YUV</option>
                                     <option value="RGB">RGB</option>
-                                    <option value="HSL">HSL</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="input__sample" class="input__label">Sample&#58;</label>
-                                <select class="input" id="input__sample" name="sample">
-                                    <option value="ALL" selected>All colours</option>
+                            <div class="input-wrapper">
+                                <label for="input__sample">Sample</label>
+                                <select id="input__sample" name="sample">
+                                    <option value="ALL" selected>All tones</option>
                                     <option value="BRIGHT">Bright tones</option>
                                     <option value="MID">Mid tones</option>
                                     <option value="DARK">Dark tones</option>
@@ -101,13 +103,13 @@
                         </fieldset>
                         <fieldset class="canfilter">
                             <legend>Canvas filters</legend>
-                            <label for="brightness" class="input__label">Brightness</label><input class="input" id="brightness" name="brightness" type="number" min=0 max=200 value=100>
-                            <label for="contrast" class="input__label">Contrast</label><input class="input" id="contrast" name="contrast" type="number" min=0 max=200 value=100>
-                            <label for="saturation" class="input__label">Saturation</label><input class="input" id="saturation" name="saturation" type="number" min=0 max=200 value=100>
+                            <label for="brightness">Brightness</label><input id="brightness" name="brightness" type="number" min=0 max=200 value=100>
+                            <label for="contrast">Contrast</label><input id="contrast" name="contrast" type="number" min=0 max=200 value=100>
+                            <label for="saturation">Saturation</label><input id="saturation" name="saturation" type="number" min=0 max=200 value=100>
                         </fieldset>
                     </li>
                     <li>
-                        <p><input id="input__submit" class="input input__submit cta" type="submit" value="Extract palette"></p>
+                        <p><input id="input__submit" class="cta" type="submit" value="Extract palette"></p>
                     </li>
                 </ol>
             </form>
