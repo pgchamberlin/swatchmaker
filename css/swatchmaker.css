@@ -57,7 +57,6 @@ input[type=submit] {
     text-transform: uppercase;
     vertical-align: baseline;
     font-size: 0.8em;
-    hyphens: auto;
 }
 hr {
     border: none;
@@ -105,9 +104,15 @@ https://www.smashingmagazine.com/2015/12/reimagining-single-page-applications-pr
 }
 /** */
 .swatch {
-    display: inline-block;
-    height: 100px;
-    width: 20%;
+    display: block;
+	position: relative;
+    height: 5.5em;
+    width: 100%;
+}
+.swatch__value {
+	position: absolute;
+	top: 1em;
+	left: 0.5em;
 }
 .canvas {
     width: 100%;
@@ -160,6 +165,14 @@ https://www.smashingmagazine.com/2015/12/reimagining-single-page-applications-pr
 .input__submit {
     display: block;
     cursor: pointer;
+}
+.input[type=number] {
+    width: 20%;
+}
+@media only screen and (min-width: 410px) {
+    .input[type=number] {
+        width: 100px;
+    }
 }
 .cta:disabled {
     background-color: indianred;
@@ -289,7 +302,8 @@ main, footer {
 
 /** Trumps */
 .js .nojsonly,
-.nojs .jsonly {
+.nojs .jsonly,
+.js .canfilter {
     display: none !important;
 }
 
