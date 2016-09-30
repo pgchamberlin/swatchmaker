@@ -64,11 +64,27 @@ function getImageMarkup(image) {
     return !!image ? '<img width="100%" src="' + image + '" alt="Image processed" />' : "";
 }
 
+function textColorStyleFor(rgb) {
+	var sum = rgb.reduce(function(a, b) {
+		return a + b;
+	}, 0);
+	var g = Math.round((sum > 384 ? sum - 384 : sum + 384) / 3);
+	var grey = [ g, g, g ];
+	return rgbToHex(grey);
+}
+
+function rgbToHex(rgb) {
+	return "#" + rgb.map(function(e) {
+		var h = e.toString(16);
+		return h.length == 1 ? "0" + h : h;
+	}).join("");
+}
+
 function getPaletteMarkup(palette) {
     if (!palette) return "";
     var markup = "";
     palette.forEach(function(swatch) {
-        markup += '<span class="swatch" style="background-color: rgb(' + swatch[0] + ',' + swatch[1] + ',' + swatch[2] + ');"></span>';
+        markup += '<span class="swatch" style="background-color: rgb(' + swatch[0] + ',' + swatch[1] + ',' + swatch[2] + ');"><span class="swatch__value" style="color: ' + textColorStyleFor(swatch) + '">' + rgbToHex(swatch) + '</span></span>';
     });
     return markup;
 }
