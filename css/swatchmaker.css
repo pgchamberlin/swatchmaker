@@ -6,33 +6,61 @@ html, body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 100%;
 }
+main, footer {
+    margin: 0 1em;
+}
+@media only screen and (min-width: 680px) {
+    main, footer {
+        margin: 0 8%;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    main, footer {
+        margin: 0 12%;
+    }
+}
+
+/* text elements */
 h1, h2, h3 {
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
 h1 {
-    text-align: center;
+    text-align: left;
     border-bottom: 2px solid #f0f0f0;;
     margin: 0;
-    padding: 0.8em 0.5em 0.5em;
-    font-size: 1.8em;
+    padding: 0.8em 0.5em 1em;
+    font-size: 1.4em;
 }
 h2 {
     padding: 0.5em 0;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.3em;
     border-bottom: 1px solid #f0f0f0;
 }
 h3 {
     padding: 0.3em 0;
-    font-size: 1em;
+    font-size: 0.9em;
     line-height: 1.3em;
+}
+@media only screen and (min-width: 410px) {
+    h1 {
+        font-size: 1.8em;
+        text-align: center;
+        padding-left: 0.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    h3 {
+        font-size: 1em;
+    }
 }
 p,
 ul,
-button,
 label,
+legend,
 input[type=submit] {
     letter-spacing: 0.07em;
     line-height: 1.4em;
@@ -50,7 +78,6 @@ h1 > a {
     border: none;
     color: #f0f0f0;
 }
-button,
 label,
 input[type=submit] {
     cursor: pointer;
@@ -64,17 +91,119 @@ hr {
     background-color: rgb(240, 240, 240);
     margin: 2em 0 0.5em;
 }
+
+/* list */
 ol {
     font-size: 1.8em;
 }
-
+ol > li {
+	max-width: 18em;
+}
 ol > li > * {
     font-size: 0.6em;
-    margin: 0.5em;
+	margin: 0.5em 0.5em 1.5em;
+}
+
+/* form elements */
+
+/* fieldset */
+fieldset {
+	padding: 0.5em 1em;
+}
+
+/* label */
+fieldset > label {
+	padding-top: 0.3em;
+}
+.input-wrapper > label {
+	flex-grow: 1;
+	margin-top: 0.2em;
+}
+
+.canvas {
+    width: 100%;
+}
+
+/* inputs / selects */
+.input-wrapper {
+	display: flex;
+}
+input, select {
+    display: inline-block;
+    border: 1px solid #f0f0f0;;
+    color: #f0f0f0;;
+    background-color: #333333;
+    padding: 0.5em;
+    position: relative;
+	font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+input[type=file] {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    display: block;
+}
+input[type=submit] {
+    display: block;
+    cursor: pointer;
+}
+input[type=number] {
+    width: 20%;
+}
+@media only screen and (min-width: 410px) {
+    .input[type=number] {
+        width: 100px;
+    }
+}
+fieldset > input {
+	font-size: 0.8em;
 }
 
 .link-back:before {
     content: "←";
+}
+
+/* modifiers */
+
+.cta {
+    display: inline-block;
+    border: 1px solid #f0f0f0;;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    text-align: center;
+    background-color: skyblue;
+    color: rgb(34, 34, 34);
+}
+.cta:disabled {
+    background-color: indianred;
+    cursor: not-allowed;
+}
+.cta.selected:before {
+    content: "✓";
+    font-size: 0.8em;
+    margin-right: 0.5em;
+}
+.cta.selected {
+    background-color: seagreen;
+    color: #f0f0f0;
+}
+.cta.error:before {
+    content: "✘";
+    font-size: 0.8em;
+    margin-right: 0.5em;
+}
+.cta.error {
+    background-color: indianred;
+    color: #f0f0f0;
 }
 
 /**
@@ -102,6 +231,7 @@ https://www.smashingmagazine.com/2015/12/reimagining-single-page-applications-pr
 .spa > *:target ~ * {
     display: none;
 }
+
 /** */
 .swatch {
     display: block;
@@ -113,91 +243,19 @@ https://www.smashingmagazine.com/2015/12/reimagining-single-page-applications-pr
 	position: absolute;
 	top: 1em;
 	left: 0.5em;
+	display: flex;
 }
-.canvas {
-    width: 100%;
-}
-.input {
-    display: inline-block;
-    border: 1px solid #f0f0f0;;
-    color: #f0f0f0;;
-    background-color: #333333;
-    padding: 0.5em;
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 0.5em;
-}
-.cta {
-    background-color: skyblue;
-    color: rgb(34, 34, 34);
-}
-.input__file {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    display: block;
-}
-.input__file--selected:before {
-    content: "✓";
-    font-size: 0.8em;
-    margin-right: 0.5em;
-}
-.input__file--selected {
-    background-color: seagreen;
-    color: #f0f0f0;
-}
-.input__file--selected-error:before {
-    content: "✘";
-    font-size: 0.8em;
-    margin-right: 0.5em;
-}
-.input__file--selected-error {
-    background-color: indianred;
-    color: #f0f0f0;
-}
-.input__submit {
-    display: block;
-    cursor: pointer;
-}
-.input[type=number] {
-    width: 20%;
-}
-@media only screen and (min-width: 410px) {
-    .input[type=number] {
-        width: 100px;
-    }
-}
-.cta:disabled {
-    background-color: indianred;
-    cursor: not-allowed;
-}
-main, footer {
-    margin: 0 1em;
-}
-@media only screen and (max-width: 410px) {
-    h1 {
-        font-size: 1.4em;
-        text-align: left;
-        padding-left: 1em;
-    }
-    h2 {
-        font-size: 1em;
-    }
-    h3 {
-        font-size: 0.9em;
-    }
+.export__area {
+	width: 95%;
+	height: 12em;
+	border: none;
+	background-color: #f0f0f0;
+	color: #222;
+	font-family: inherit;
+	padding: 1em 0.5em;
+	flex-grow: 1;
 }
 @media only screen and (min-width: 680px) {
-    main, footer {
-        margin: 0 8%;
-    }
     .results {
         display: flex;
         flex-direction: row-reverse;
@@ -209,11 +267,6 @@ main, footer {
         vertical-align: top;
         flex-basis: 50%;
         flex-grow: 1;
-    }
-}
-@media only screen and (min-width: 1100px) {
-    main, footer {
-        margin: 0 12%;
     }
 }
 
