@@ -27,10 +27,8 @@
                 <div class="split-column">
                     <h3>Palette</h3>
                     <div id="palette" class="palette">{{{palette}}}</div>
-					{{#export}}
-                    <h3>Export</h3>
+                    <h3 class="jsonly">Export</h3>
                     <div id="export" class="export">{{{export}}}</div>
-					{{/export}}
                 </div>
                 <div class="split-column">
                     <h3>Source image</h3>
