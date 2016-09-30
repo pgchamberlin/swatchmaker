@@ -72,22 +72,38 @@
                             <input tabindex=-1 id="input__file" class="input__file" name="image" type="file" accept="image/*">
                         </div>
                     </li>
-                    <li class="hidden">
-                        <p>If you're feeling adventurous set some <button class="input cta">advanced</button> options.</p>
-                        <fieldset class="jsonly hidden">
-                            <legend>Advanced options</legend>
+                    <li class="jsonly">
+                        <button role="button">Configure</button>
+                        <fieldset>
+                            <legend>Swatchmaker settings</legend>
                             <div>
                                 <label for="input__k" class="input__label">Palette size (K)&#58;</label>
-                                <input id="input__k" class="input input__k" type="number" name="K" value=5 max=10>
+                                <input id="input__k" class="input input__k" type="number" name="K" value=3 max=10>
                             </div>
                             <div>
                                 <label for="input__space" class="input__label">Colour space&#58;</label>
                                 <select class="input" id="input__space" name="space">
-                                    <option value="RGB" selected>RGB</option>
-                                    <option value="YUV">YUV</option>
+                                    <option value="YUV" selected>YUV</option>
+                                    <option value="RGB">RGB</option>
                                     <option value="HSL">HSL</option>
                                 </select>
                             </div>
+                            <div>
+                                <label for="input__sample" class="input__label">Sample&#58;</label>
+                                <select class="input" id="input__sample" name="sample">
+                                    <option value="ALL" selected>All colours</option>
+                                    <option value="BRIGHT">Bright tones</option>
+                                    <option value="MID">Mid tones</option>
+                                    <option value="DARK">Dark tones</option>
+                                    <option value="SATURATED">Saturated tones</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <fieldset class="canfilter">
+                            <legend>Canvas filters</legend>
+                            <label for="brightness" class="input__label">Brightness</label><input class="input" id="brightness" name="brightness" type="number" min=0 max=200 value=100>
+                            <label for="contrast" class="input__label">Contrast</label><input class="input" id="contrast" name="contrast" type="number" min=0 max=200 value=100>
+                            <label for="saturation" class="input__label">Saturation</label><input class="input" id="saturation" name="saturation" type="number" min=0 max=200 value=100>
                         </fieldset>
                     </li>
                     <li>
