@@ -1,5 +1,4 @@
 Advanced options:
- - [ ] Canvas filters (https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
  - [ ] Brights / mids / darks filter
  - [ ] Saturation filter (could this be done with canvas saturation filter? Or just isolate existing saturated pixels?)
  
@@ -15,5 +14,5 @@ CSS
  - [ ] Refactor and organise better. Sort out BEM-ish-ness!
 
 Server-side
- - [ ] Tidy up rendering (Chintz?)
+ - [ ] Tidy up rendering 
  - [ ] Factor out dirty resize and use Jimp better
