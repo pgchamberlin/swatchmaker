@@ -1,6 +1,6 @@
 Advanced options:
- - [ ] Brights / mids / darks filter
- - [ ] Saturation filter (could this be done with canvas saturation filter? Or just isolate existing saturated pixels?)
+ - [x] Brights / mids / darks filter
+ - [x] Saturation filter (could this be done with canvas saturation filter? Or just isolate existing saturated pixels?)
  
 A11y
  - [ ] Need to do some more a11y-minded testing (with JS first, non-JS after?)
