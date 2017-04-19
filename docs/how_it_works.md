@@ -15,10 +15,10 @@ Like many other algorithms used in data analysis it's not actually that complica
 
 Simple, right?
 
-One of the weaknesses of the algorithm is that it can be tricky to predict a good value for K. For Swatchmaker I've defaulted to K=5, but that's arbitrary and you can change it using the advanced options (coming soon...). The fact is that good values for K will vary significantly from image to image. Bear in mind that higher values are more expensive to compute.
+One of the weaknesses of the algorithm is that it can be tricky to predict a good value for K. For Swatchmaker I've defaulted to K=3, but that's arbitrary and you can change it in the settings. The fact is that good values for K will vary significantly from image to image. Bear in mind that higher values are more expensive to compute.
 
-For a deeper dive take a look at [Swatchmaker's source code](https://github.com/pgchamberlin/swatchmaker/blob/master/lib/shared/swatchmaker.js), or look up the better, more detailed article about [K-means on Wikipedia](https://en.wikipedia.org/wiki/K-means_clustering).
+For a deeper dive take a look at [Swatchmaker's source code](https://github.com/pgchamberlin/swatchmaker/blob/master/lib/shared/swatchmaker.js), or for more general information there's plenty of information about [K-means on Wikipedia](https://en.wikipedia.org/wiki/K-means_clustering).
 
-For most devices Swatchmaker runs it's analysis in the browser using JavaScript. When a device has poor JavaSript capabilities it falls back to a NodeJS server-side version which runs the same code in an isomorphic kind of way.
+For most devices Swatchmaker runs it's analysis in the browser using JavaScript. When a device has poor JavaSript capabilities it falls back to a NodeJS server-side version which runs the same code in an isomorphic kind of way. If you're interested in isomorphic JS then take a look at the hacky (but successful!) way I've implemented the behaviour, and let me know what you think.
 
 Swatchmaker is released under an MIT license and is [hosted on Github](https://github.com/pgchamberlin/swatchmaker).
